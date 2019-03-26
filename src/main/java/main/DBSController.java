@@ -11,15 +11,16 @@ public class DBSController {
 
     @Autowired
     private DBSService DBSService;
-    static String user = "";
+    public static String user = "";
 
     @RequestMapping(method = RequestMethod.POST, value ="/login")
-    public void login(@RequestBody String username){
+    public String login(@RequestBody String username){
         user = username;
+        return username;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/calculate")
-    public Goal calculateAction(@RequestBody Goal goal) {
+    public String calculateAction(@RequestBody Goal goal) {
         return DBSService.calculateAction(user, goal);
     }
 
